@@ -1,5 +1,5 @@
 # Criminopatía
-Scrapea y descarga todos los episodios de Criminopatía (pensado para importarlos en un media system como Jellyfin).
+Scrapea y descarga todos los episodios de [Criminopatía](https://criminopatia.com/) (pensado para importarlos en un media system como Jellyfin).
 
 ![Criminopatía](https://github.com/ifayost/Criminopatia/blob/main/Cabeceras-Criminopatia-Tw-02.png?raw=true)
 
@@ -16,3 +16,12 @@ usage: criminopatia [-h] [--episodes] [--cf] [--archivo]
       --archivo   Scrapea y descarga el contenido de los archivos
 
     Si no se añade ninguna flag, por defecto scrapea y descarga los episodios y el club de fans.
+
+## Instalación
+    git clone https://github.com/ifayost/Criminopatia.git
+    cd Crimnopatia
+    python3 -m venv .venv
+    source .venv/bin/activate
+    python3 -m pip install -r requirements.txt
+    python3 steganography.py -h
+Para logearte usando tus credenciales modifica el usarname y password del archivo credentials.py
