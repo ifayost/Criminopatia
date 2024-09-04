@@ -1,0 +1,14 @@
+beautifulsoup4==4.12.3
+bs4==0.0.2
+certifi==2024.7.4
+charset-normalizer==3.3.2
+coverage==5.5
+deprecation==2.1.0
+eyed3==0.9.7
+filetype==1.2.0
+idna==3.7
+packaging==24.1
+requests==2.32.3
+soupsieve==2.6
+toml==0.10.2
+urllib3==2.2.2
