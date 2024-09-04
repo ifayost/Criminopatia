@@ -24,4 +24,4 @@ usage: criminopatia [-h] [--episodes] [--cf] [--archivo]
     source .venv/bin/activate
     python3 -m pip install -r requirements.txt
     python3 steganography.py -h
-Para logearte usando tus credenciales modifica el usarname y password del archivo credentials.py
+Para logearte usando tus credenciales modifica el username y password del archivo credentials.py
