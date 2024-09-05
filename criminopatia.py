@@ -80,12 +80,13 @@ def download_episode_cf(s, link, link_container, path):
     episode_path = title
     for k, v in exfat_illegal_chars.items():
         episode_path = episode_path.replace(k, v)
-    print(f'\n[+] Downloading: {title} ', end=' ')
+    print(f'\n[+] {title}: ', end=' ')
     episode_path = path / episode_path
     mp3_in_path = list(episode_path.glob('**/*.mp3'))
     if mp3_in_path:
         print('√', end='')
     else:
+        print('Downloading... ', end=' ')
         if not episode_path.exists():
             episode_path.mkdir()
         download_link = [link.get('href') for link in soup.find_all('a')]
@@ -123,7 +124,7 @@ def download_episode_cf(s, link, link_container, path):
 
 
 def scrape_club_de_fans(s):
-    print('[+] Scraping Club de Fans')
+    print('\n\n[*] SCRAPING GLUB DE FANS')
     r = s.get('https://criminopatia.com/club-de-fans/')
     soup = BeautifulSoup(r.content.decode(), 'html.parser')
     for article in soup.find_all('article'):
@@ -139,7 +140,7 @@ def scrape_archive(s):
             '/episodios/', '/club-de-fans/', '/mi-cuenta/', '/faqs/', '/wp-login.php', 
             '/club-de-fans-archivo/', '/registro/'
             ]
-    print('[+] Scraping Archive')
+    print('\n\n[*] SCRAPING ARCHIVE')
     r = s.get('https://criminopatia.com/club-de-fans-archivo/')
     soup = BeautifulSoup(r.content.decode(), 'html.parser')
     for Link in soup.find_all('a'):
@@ -198,30 +199,32 @@ def download_episode(s, article, link):
 
 
 def scrape_episodes(s):
+    print('\n\n[*] SCRAPING EPISODES')
     not_found = "It seems we can't find what you're looking for"
     with requests.Session() as s:
         s.headers.update(headers)
-        r = s.get('https://criminopatia.com/episodios//')
+        r = s.get('https://criminopatia.com/episodios/')
         c = 1
         while not not_found in r.text: 
-            print(f'\n\n[+] Page {c}')
+            print(f'\n\n[-] Page {c}')
             soup = BeautifulSoup(r.content.decode(), 'html.parser')
             articles = soup.find_all('article') 
             for article in articles:
                 title = article.find('a', class_='tcb-article-cover-link') 
-                number_match = re.match(r'^\d+\. ', title.text) 
+                number_match = re.match(r'^\d+\.\s', title.text) 
                 if number_match:
                     episode_number = number_match[0].split('.')[0]
                     episode_path = title.text
                     for k, v in exfat_illegal_chars.items():
                         episode_path = episode_path.replace(k, v)
-                    print(f'\n[+] Downloading: {title.text} ', end=' ')
+                    print(f'\n[+] {title.text}:', end=' ')
                     episode_path = EPISODES_PATH / episode_path
                     mp3_in_path = list(episode_path.glob('**/*.mp3'))
                     if mp3_in_path:
                         print('√', end='')
                         continue
                     else:
+                        print('Downloading... ', end=' ')
                         if not episode_path.exists():
                             episode_path.mkdir()
                         link = title.get('href')
