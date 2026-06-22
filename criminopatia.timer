@@ -1,0 +1,12 @@
+[Unit]
+Description=Ejecutar descargador de Criminopatia semanalmente
+Documentation=https://github.com/ifayost/Criminopatia
+
+[Timer]
+# Cada jueves a las 08:00
+OnCalendar=Thu *-*-* 08:00:00
+# Ejecutar tras arranque si se perdió una ejecución
+Persistent=true
+
+[Install]
+WantedBy=timers.target
