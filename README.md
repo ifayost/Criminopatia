@@ -113,7 +113,7 @@ mkdir -p ~/.config/containers/systemd
 
 Copia los archivos `criminopatia.container` y `criminopatia.timer` del repositorio a `~/.config/containers/systemd/`.
 
-**Importante:** En `criminopatia.container`, reemplaza `/home/USER/Criminopatia` con tu ruta real de descargas.
+**Importante:** En `criminopatia.container`, reemplaza `/path/to/download` con tu ruta real de descargas.
 
 Configura el modo de ejecución descomentando las líneas `Environment=` según necesites:
 - `RUN_EPISODES=true` - Episodios regulares
