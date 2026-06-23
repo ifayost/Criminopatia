@@ -7,12 +7,11 @@ Image=criminopatia
 ContainerName=criminopatia
 AutoUpdate=local
 
-# Reemplaza USER con tu nombre de usuario real
-Volume=/home/USER/Criminopatia:/Criminopatia:Z
+Volume=/path/to/download:/Criminopatia:Z
 
 # Opción A: Podman secrets (más seguro)
-Secret=CRIMINOPATIA_USER:env
-Secret=CRIMINOPATIA_PASSWORD:env
+Secret=CRIMINOPATIA_USER,type=env,target=CRIMINOPATIA_USER
+Secret=CRIMINOPATIA_PASSWORD,type=env,target=CRIMINOPATIA_PASSWORD
 
 # Opción B: Archivo .env (menos seguro pero más sencillo)
 # EnvironmentFile=/home/USER/.config/containers/systemd/criminopatia.env
